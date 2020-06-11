@@ -12,8 +12,7 @@ std::ostream &operator<<(std::ostream &output_stream, const std::chrono::time_po
 {
     auto ttime = ClockType::to_time_t(time_point);
 
-    char buffer[26];
-    ctime_r(&ttime, buffer);
+    auto buffer = ctime(&ttime);
     buffer[24] = 0; //Remove newline that is added
 
     return output_stream << buffer;
