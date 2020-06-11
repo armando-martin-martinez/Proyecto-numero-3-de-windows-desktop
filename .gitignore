@@ -339,6 +339,13 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 
+
+
+#vscode local settings folder
 .vscode/
+
+#vscode local temp binary
 Proyecto numero 3 de windows desktop
+
+#local formatting options for clang-format
 .clang-format
