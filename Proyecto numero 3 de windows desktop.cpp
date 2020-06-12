@@ -5,7 +5,7 @@
 #include <chrono>
 #include <iomanip>
 
-
+//ostream operator << for time_point
 //Function to print points in time
 template <typename ClockType, typename Duration>
 std::ostream &operator<<(std::ostream &output_stream, const std::chrono::time_point<ClockType, Duration> &time_point)
@@ -18,6 +18,7 @@ std::ostream &operator<<(std::ostream &output_stream, const std::chrono::time_po
     return output_stream << buffer;
 }
 
+//ostream operator << for durtation
 //Function to print durations (time lapses) with nanosecond precision
 template <typename Rep, typename Period>
 std::ostream & operator <<(std::ostream &output_stream, const std::chrono::duration<Rep, Period> &timeSpan)
@@ -39,11 +40,13 @@ int main()
     std::cout << "Hello World!\n";
     std::cout << "Another Hello World! :)\n";
 
+    //Used ostream operator << on a time_point
     std::cout << std::chrono::system_clock::now() << "\n";
 
     auto endTime = std::chrono::high_resolution_clock::now();
 
-    //substracting 2 time points yields a duration
+    //substracting 2 time points yields a duration.
+    //Used ostream operator << on a duration
     std::cout << "Execution of program took about " << (endTime - startTime) << "\n";
 
     std::cout << "\n";
