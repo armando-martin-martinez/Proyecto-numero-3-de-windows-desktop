@@ -38,6 +38,7 @@ std::ostream & operator <<(std::ostream &output_stream, const std::chrono::durat
 
 int main()
 {
+    int a;
     auto startTime = std::chrono::high_resolution_clock::now();
 
     std::cout << "Hello World!\n";
@@ -53,4 +54,5 @@ int main()
     std::cout << "Execution of program took about " << (endTime - startTime) << "\n";
 
     std::cout << "\n";
+    std::cin >> a;
 }
