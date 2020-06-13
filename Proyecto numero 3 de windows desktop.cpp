@@ -63,7 +63,7 @@ main()
 
 
 	HMODULE handle_to_dll = LoadLibrary(L"lib.dll");
-	if (hanlde_to_dll == NULL) //Library not loaded
+	if (handle_to_dll == NULL) //Library not loaded
 	{
 		auto error_code = GetLastError();
 
@@ -81,7 +81,7 @@ main()
 		std::cerr << "LoadLibrary failed with error code: " << error_code << "\n";
 
 		std::cin >> a;
-		return;
+		return 0;
 	}
 
 	typedef int(__cdecl * _add)(int a, int b); //This defines _add as the type of a pointer to a function with the specified calling convention (__cdecl) and arguments
@@ -94,7 +94,7 @@ main()
 		std::cerr << "GetProcAddress failed with error code: " << error_code << "\n";
 
 		std::cin >> a;
-		return;
+		return 0;
 	}
 
 	int c = pAdd(5, 7); //Call function using a function pointer (pAdd is a pointer)
@@ -106,7 +106,7 @@ main()
 		std::cerr << "GetProcAddress failed with error code: " << error_code << "\n";
 
 		std::cin >> a;
-		return;
+		return 0;
 	}
 
 	bool dlgres = pSaySomething(); //Call function using a function pointer (pSaySomething is a pointer)
