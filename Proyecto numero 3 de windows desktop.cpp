@@ -7,6 +7,8 @@
 #include <iostream>
 #include <chrono>
 #include <iomanip>
+#include<Windows.h>
+
 
 //ostream operator << for time_point
 //Function to print points in time
@@ -39,6 +41,7 @@ std::ostream & operator <<(std::ostream &output_stream, const std::chrono::durat
 int main()
 {
     int a;
+    
     auto startTime = std::chrono::high_resolution_clock::now();
 
     std::cout << "Hello World!\n";
@@ -54,5 +57,17 @@ int main()
     std::cout << "Execution of program took about " << (endTime - startTime) << "\n";
 
     std::cout << "\n";
+
+
+    HMODULE handle_to_dll = LoadLibrary(L"lib.dll");
+
+    typedef int(__cdecl* _add)(int a, int b);
+    typedef bool(__cdecl* saySomething)();
+
+    auto pAdd = (_add)GetProcAddress(handle_to_dll, "_add");
+    int c = pAdd(5, 7);
+
+    auto pSaySomething = (saySomething)GetProcAddress(handle_to_dll, "saySomething");
+    bool dlgres = pSaySomething();
     std::cin >> a;
 }
